@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GMD | Orientación sobre Licencias Médicas</title>
+
+    <meta
+        name="description"
+        content="Orientación inicial para entender en qué etapa se encuentra tu licencia médica y qué antecedentes conviene revisar."
+    >
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fuente -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+
+        .option-button {
+            transition: all 0.2s ease;
+        }
+
+        .option-button:hover {
+            transform: translateY(-2px);
+            border-color: #2563EB;
+            background-color: #EFF6FF;
+        }
+
+        .option-button.selected {
+            border-color: #2563EB;
+            background-color: #EFF6FF;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .stage-card {
+            transition: all 0.2s ease;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-2px);
+            border-color: #2563EB;
+            background-color: #EFF6FF;
+        }
+
+        .stage-card.selected {
+            border-color: #2563EB;
+            background-color: #EFF6FF;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+        }
+
+    </style>
+</head>
+
+
+<body class="flex flex-col min-h-screen">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <header class="bg-slate-900 text-white px-6 py-16 md:py-20">
+
+        <div class="max-w-4xl mx-auto text-center">
+
+            <span
+                class="inline-block bg-blue-600/20 text-blue-400 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6"
+            >
+                🎁 Orientación inicial gratuita
+            </span>
+
+
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+
+                ¿Qué está pasando con tu
+                <span class="text-blue-500">
+                    licencia médica?
+                </span>
+
+            </h1>
+
+
+            <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+
+                Identifica en qué etapa se encuentra tu caso
+                y descubre qué información conviene revisar.
+
+            </p>
+
+
+            <a
+                href="#orientacion"
+                class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-full transition shadow-lg text-lg"
+            >
+
+                Revisar mi situación
+
+            </a>
+
+
+            <p class="text-slate-400 text-xs mt-4">
+                3 preguntas · pocos minutos · sin obligación de contratar
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
+
+    <section class="max-w-5xl mx-auto px-6 pt-14 pb-8">
+
+        <div class="text-center max-w-2xl mx-auto">
+
+            <p class="text-sm font-bold uppercase tracking-widest text-blue-600 mb-3">
+                Orientación GMD
+            </p>
+
+
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-4">
+                Empecemos por lo más importante
+            </h2>
+
+
+            <p class="text-slate-600 leading-relaxed">
+
+                Responde tres preguntas breves.
+                No necesitas conocer términos técnicos para comenzar.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         INTERACTIVE EXPERIENCE
+    ====================================================== -->
+
+    <main
+        id="orientacion"
+        class="max-w-3xl mx-auto px-6 pb-16 w-full"
+    >
+
+
+        <div
+            id="question-card"
+            class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm"
+        >
+
+
+            <!-- Progress -->
+
+            <div class="flex items-center justify-between mb-3">
+
+                <span
+                    id="step-label"
+                    class="text-sm font-semibold text-slate-500"
+                >
+                    Pregunta 1 de 3
+                </span>
+
+
+                <span
+                    id="progress-label"
+                    class="text-xs text-slate-400"
+                >
+                    33%
+                </span>
+
+            </div>
+
+
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden mb-8">
+
+                <div
+                    id="progress-bar"
+                    class="h-full bg-blue-600 rounded-full transition-all duration-300"
+                    style="width: 33%;"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- Question -->
+
+            <div
+                id="question-container"
+                class="fade-in"
+            >
+            </div>
+
+
+            <!-- Back button -->
+
+            <div
+                id="navigation"
+                class="mt-7 flex justify-start"
+            >
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RESULT
+        ================================================== -->
+
+        <div
+            id="result-card"
+            class="hidden bg-white border border-slate-200 rounded-3xl p-7 md:p-10 shadow-sm mt-6"
+        >
+
+            <div class="text-center">
+
+
+                <div
+                    class="w-14 h-14 mx-auto rounded-full bg-blue-50 flex items-center justify-center text-2xl mb-5"
+                >
+                    ✓
+                </div>
+
+
+                <p class="text-xs font-bold uppercase tracking-widest text-blue-600">
+                    Orientación inicial gratuita
+                </p>
+
+
+                <h2
+                    id="result-title"
+                    class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3"
+                >
+                </h2>
+
+
+                <p
+                    id="result-text"
+                    class="text-slate-600 leading-relaxed max-w-xl mx-auto mt-4"
+                >
+                </p>
+
+
+
+                <!-- Summary -->
+
+                <div
+                    class="bg-slate-50 rounded-2xl p-5 text-left max-w-xl mx-auto mt-7"
+                >
+
+                    <p class="text-sm font-bold text-slate-700 mb-4">
+                        Lo que nos indicaste
+                    </p>
+
+
+                    <div class="space-y-3 text-sm text-slate-600">
+
+
+                        <div>
+
+                            <span class="block text-xs uppercase tracking-wide text-slate-400 font-bold">
+                                Etapa
+                            </span>
+
+                            <span
+                                id="summary-stage"
+                                class="font-semibold text-slate-700"
+                            >
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="block text-xs uppercase tracking-wide text-slate-400 font-bold">
+                                Situación
+                            </span>
+
+                            <span
+                                id="summary-situation"
+                                class="font-semibold text-slate-700"
+                            >
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="block text-xs uppercase tracking-wide text-slate-400 font-bold">
+                                Necesidad
+                            </span>
+
+                            <span
+                                id="summary-need"
+                                class="font-semibold text-slate-700"
+                            >
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Actions -->
+
+                <div class="mt-7">
+
+
+                    <a
+                        id="whatsapp-button"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-full sm:w-auto inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-4 rounded-xl transition"
+                    >
+
+                        💬 Solicitar orientación gratuita
+
+                    </a>
+
+
+                    <button
+                        id="restart-button"
+                        type="button"
+                        class="block mx-auto mt-4 text-sm text-slate-500 hover:text-slate-700 underline"
+                    >
+
+                        Comenzar nuevamente
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Disclaimer -->
+
+        <p
+            class="text-xs text-slate-400 text-center mt-6 leading-relaxed"
+        >
+
+            Esta herramienta entrega una orientación inicial.
+            No constituye una evaluación clínica, asesoría jurídica,
+            peritaje ni garantía de resultado.
+
+        </p>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         WHAT WE DO
+    ====================================================== -->
+
+    <section class="bg-white border-t border-slate-200">
+
+        <div class="max-w-5xl mx-auto px-6 py-16">
+
+
+            <div class="text-center mb-10">
+
+                <p class="text-sm font-bold uppercase tracking-widest text-blue-600 mb-2">
+                    GMD
+                </p>
+
+
+                <h2 class="text-3xl font-extrabold text-slate-900">
+                    Primero entender. Después decidir.
+                </h2>
+
+
+                <p class="text-slate-600 max-w-2xl mx-auto mt-4">
+                    Analizamos la información disponible para ayudar
+                    a ordenar la situación antes de definir el siguiente paso.
+                </p>
+
+            </div>
+
+
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+                <!-- Pilar 1 -->
+
+                <div class="bg-slate-50 p-7 rounded-2xl border border-slate-200">
+
+                    <div class="text-3xl mb-4">
+                        📄
+                    </div>
+
+
+                    <h3 class="font-bold text-lg mb-3">
+                        Antecedentes
+                    </h3>
+
+
+                    <p class="text-slate-600 text-sm leading-relaxed">
+
+                        Revisamos la documentación disponible
+                        y su relación con la situación del caso.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Pilar 2 -->
+
+                <div class="bg-slate-50 p-7 rounded-2xl border border-slate-200">
+
+                    <div class="text-3xl mb-4">
+                        🔎
+                    </div>
+
+
+                    <h3 class="font-bold text-lg mb-3">
+                        Trazabilidad
+                    </h3>
+
+
+                    <p class="text-slate-600 text-sm leading-relaxed">
+
+                        Ordenamos los principales hitos,
+                        actuaciones y antecedentes disponibles.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Pilar 3 -->
+
+                <div class="bg-slate-50 p-7 rounded-2xl border border-slate-200">
+
+                    <div class="text-3xl mb-4">
+                        🧩
+                    </div>
+
+
+                    <h3 class="font-bold text-lg mb-3">
+                        Análisis documental
+                    </h3>
+
+
+                    <p class="text-slate-600 text-sm leading-relaxed">
+
+                        Identificamos qué información está disponible,
+                        qué antecedentes podrían faltar y qué aspectos
+                        requieren revisión.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+    ====================================================== -->
+
+    <section class="max-w-5xl mx-auto px-6 py-16">
+
+        <div class="text-center mb-10">
+
+            <h2 class="text-3xl font-extrabold text-slate-900">
+                ¿Cómo funciona?
+            </h2>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+
+
+            <div>
+
+                <div
+                    class="w-12 h-12 mx-auto rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-extrabold text-lg mb-4"
+                >
+                    1
+                </div>
+
+
+                <h3 class="font-bold mb-2">
+                    Nos cuentas tu situación
+                </h3>
+
+
+                <p class="text-sm text-slate-600">
+                    Respondes tres preguntas iniciales.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <div
+                    class="w-12 h-12 mx-auto rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-extrabold text-lg mb-4"
+                >
+                    2
+                </div>
+
+
+                <h3 class="font-bold mb-2">
+                    Ordenamos la información
+                </h3>
+
+
+                <p class="text-sm text-slate-600">
+                    Identificamos qué antecedentes conviene revisar.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <div
+                    class="w-12 h-12 mx-auto rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-extrabold text-lg mb-4"
+                >
+                    3
+                </div>
+
+
+                <h3 class="font-bold mb-2">
+                    Te orientamos
+                </h3>
+
+
+                <p class="text-sm text-slate-600">
+                    Con la información disponible, se identifica
+                    el siguiente paso que podría corresponder.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FINAL CTA
+    ====================================================== -->
+
+    <section class="bg-slate-900 text-white px-6 py-16">
+
+        <div class="max-w-3xl mx-auto text-center">
+
+
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+                ¿No sabes qué está pasando con tu licencia?
+            </h2>
+
+
+            <p class="text-slate-300 mb-8">
+                Comienza por entender tu situación.
+            </p>
+
+
+            <a
+                href="#orientacion"
+                class="inline-flex bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-full transition"
+            >
+
+                Iniciar orientación
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="bg-slate-100 py-8 text-center text-slate-500 text-sm px-6">
+
+        <p class="font-semibold text-slate-700">
+            Gestión Médica Digital
+        </p>
+
+
+        <p class="mt-1">
+            Auditoría Clínica y Gestión Médico-Legal
+        </p>
+
+
+        <div class="mt-4 space-y-1">
+
+            <p>
+                WhatsApp:
+                <a
+                    href="https://wa.me/56979730346"
+                    target="_blank"
+                    class="font-semibold text-slate-700 hover:text-blue-600"
+                >
+                    +56 9 7973 0346
+                </a>
+            </p>
+
+
+            <p>
+                Email:
+                <a
+                    href="mailto:gestionmeddigital@gmail.com"
+                    class="font-semibold text-slate-700 hover:text-blue-600"
+                >
+                    gestionmeddigital@gmail.com
+                </a>
+            </p>
+
+        </div>
+
+
+        <p class="mt-5 text-xs">
+            © 2026 Gestión Médica Digital. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /*
+        ======================================================
+        CONFIGURACIÓN
+        ======================================================
+        */
+
+        const WHATSAPP_NUMBER = "56979730346";
+
+
+        /*
+        ======================================================
+        PREGUNTAS
+        ======================================================
+        */
+
+        const questions = [
+
+            /* ------------------------------------------------
+               PREGUNTA 1
+               LAS ETAPAS P1 / P2 / P3 SE EXPLICAN AQUÍ
+               UNA SOLA VEZ
+            ------------------------------------------------ */
+
+            {
+
+                key: "stage",
+
+                title: "¿En qué etapa aparece tu licencia?",
+
+                type: "stage",
+
+                options: [
+
+                    {
+                        value: "P1",
+                        label: "P1 — Citar paciente",
+                        description:
+                            "Aparece una citación para que el paciente concurra o responda a una instancia de fiscalización."
+                    },
+
+                    {
+                        value: "P2",
+                        label: "P2 — Solicitar antecedentes",
+                        description:
+                            "Se solicitan antecedentes relacionados con la licencia o con su justificación."
+                    },
+
+                    {
+                        value: "P3",
+                        label: "P3 — Pendiente / fiscalización",
+                        description:
+                            "El proceso aparece pendiente o asociado a una fiscalización."
+                    },
+
+                    {
+                        value: "NO_SE",
+                        label: "No sé / No entiendo la etapa",
+                        description:
+                            "No te preocupes. También podemos orientarte desde aquí."
+                    }
+
+                ]
+
+            },
+
+
+            /* ------------------------------------------------
+               PREGUNTA 2
+            ------------------------------------------------ */
+
+            {
+
+                key: "situation",
+
+                title: "¿Qué ocurrió con tu licencia?",
+
+                type: "normal",
+
+                options: [
+
+                    {
+                        value: "RECHAZADA",
+                        label: "Fue rechazada",
+                        description:
+                            "Recibí un rechazo o resolución desfavorable."
+                    },
+
+                    {
+                        value: "PENDIENTE",
+                        label: "Está pendiente",
+                        description:
+                            "Todavía no tengo una resolución clara."
+                    },
+
+                    {
+                        value: "APELACION",
+                        label: "Ya presenté una apelación",
+                        description:
+                            "Ya inicié una instancia de reclamación."
+                    },
+
+                    {
+                        value: "NO_ESTOY_SEGURO",
+                        label: "No estoy seguro/a",
+                        description:
+                            "No tengo claridad sobre qué ocurrió."
+                    }
+
+                ]
+
+            },
+
+
+            /* ------------------------------------------------
+               PREGUNTA 3
+            ------------------------------------------------ */
+
+            {
+
+                key: "need",
+
+                title: "¿Qué necesitas ahora?",
+
+                type: "normal",
+
+                options: [
+
+                    {
+                        value: "ENTENDER",
+                        label: "Entender mi caso",
+                        description:
+                            "Quiero saber qué significa lo que aparece en mi proceso."
+                    },
+
+                    {
+                        value: "ORDENAR",
+                        label: "Ordenar mis antecedentes",
+                        description:
+                            "Quiero saber qué documentos e información debería reunir."
+                    },
+
+                    {
+                        value: "SIGUIENTE",
+                        label: "Saber qué hacer ahora",
+                        description:
+                            "Necesito orientación sobre el siguiente paso."
+                    }
+
+                ]
+
+            }
+
+        ];
+
+
+
+        /*
+        ======================================================
+        VARIABLES
+        ======================================================
+        */
+
+        let currentStep = 0;
+
+
+        let answers = {
+
+            stage: "",
+            situation: "",
+            need: ""
+
+        };
+
+
+
+        /*
+        ======================================================
+        ELEMENTOS
+        ======================================================
+        */
+
+        const questionContainer =
+            document.getElementById("question-container");
+
+
+        const navigation =
+            document.getElementById("navigation");
+
+
+        const stepLabel =
+            document.getElementById("step-label");
+
+
+        const progressLabel =
+            document.getElementById("progress-label");
+
+
+        const progressBar =
+            document.getElementById("progress-bar");
+
+
+        const questionCard =
+            document.getElementById("question-card");
+
+
+        const resultCard =
+            document.getElementById("result-card");
+
+
+        const resultTitle =
+            document.getElementById("result-title");
+
+
+        const resultText =
+            document.getElementById("result-text");
+
+
+        const summaryStage =
+            document.getElementById("summary-stage");
+
+
+        const summarySituation =
+            document.getElementById("summary-situation");
+
+
+        const summaryNeed =
+            document.getElementById("summary-need");
+
+
+        const whatsappButton =
+            document.getElementById("whatsapp-button");
+
+
+        const restartButton =
+            document.getElementById("restart-button");
+
+
+
+        /*
+        ======================================================
+        MOSTRAR PREGUNTA
+        ======================================================
+        */
+
+        function renderQuestion() {
+
+
+            const question =
+                questions[currentStep];
+
+
+            const percentage =
+                Math.round(
+                    ((currentStep + 1) /
+                    questions.length) * 100
+                );
+
+
+            stepLabel.textContent =
+                `Pregunta ${currentStep + 1} de ${questions.length}`;
+
+
+            progressLabel.textContent =
+                `${percentage}%`;
+
+
+            progressBar.style.width =
+                `${percentage}%`;
+
+
+            questionContainer.classList.remove(
+                "fade-in"
+            );
+
+
+            void questionContainer.offsetWidth;
+
+
+            questionContainer.classList.add(
+                "fade-in"
+            );
+
+
+
+            /* -----------------------------------------------
+               PREGUNTA DE ETAPAS
+            ------------------------------------------------ */
+
+            if (question.type === "stage") {
+
+
+                questionContainer.innerHTML = `
+
+                    <div class="mb-7">
+
+                        <h2 class="text-2xl font-extrabold text-slate-900 mb-3">
+                            ${question.title}
+                        </h2>
+
+                        <p class="text-sm text-slate-500">
+                            Estas son las etapas que pueden aparecer durante
+                            el proceso. Si no reconoces la tuya, selecciona
+                            "No sé".
+                        </p>
+
+                    </div>
+
+
+                    <div class="grid gap-4">
+
+                        ${question.options.map(option => `
+
+                            <button
+                                type="button"
+                                class="stage-card option-button w-full text-left border border-slate-200 rounded-2xl p-5 bg-white"
+                                data-value="${option.value}"
+                            >
+
+                                <div class="flex gap-4">
+
+                                    <div class="flex-shrink-0">
+
+                                        ${
+                                            option.value !== "NO_SE"
+
+                                            ?
+
+                                            `
+                                            <span class="inline-flex items-center justify-center
+                                                w-10 h-10 rounded-xl bg-blue-50 text-blue-600
+                                                font-extrabold text-sm">
+
+                                                ${option.value}
+
+                                            </span>
+                                            `
+
+                                            :
+
+                                            `
+                                            <span class="inline-flex items-center justify-center
+                                                w-10 h-10 rounded-xl bg-slate-100 text-slate-500
+                                                font-bold">
+
+                                                ?
+
+                                            </span>
+                                            `
+                                        }
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <div class="font-bold text-slate-800">
+                                            ${option.label}
+                                        </div>
+
+                                        <div class="text-sm text-slate-500 mt-1 leading-relaxed">
+                                            ${option.description}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </button>
+
+                        `).join("")}
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* -----------------------------------------------
+               PREGUNTAS NORMALES
+            ------------------------------------------------ */
+
+            else {
+
+
+                questionContainer.innerHTML = `
+
+                    <div class="mb-7">
+
+                        <h2 class="text-2xl font-extrabold text-slate-900 mb-3">
+                            ${question.title}
+                        </h2>
+
+                        <p class="text-sm text-slate-500">
+                            Selecciona la opción que más se parezca
+                            a tu situación.
+                        </p>
+
+                    </div>
+
+
+                    <div class="grid gap-3">
+
+                        ${question.options.map(option => `
+
+                            <button
+                                type="button"
+                                class="option-button w-full text-left border border-slate-200 rounded-2xl p-5 bg-white"
+                                data-value="${option.value}"
+                            >
+
+                                <span class="font-bold text-slate-800">
+                                    ${option.label}
+                                </span>
+
+                                <span class="block text-sm text-slate-500 mt-1">
+                                    ${option.description}
+                                </span>
+
+                            </button>
+
+                        `).join("")}
+
+                    </div>
+
+                `;
+
+            }
+
+
+
+            /*
+            ==================================================
+            NAVEGACIÓN
+            ==================================================
+            */
+
+            navigation.innerHTML = "";
+
+
+            if (currentStep > 0) {
+
+
+                const backButton =
+                    document.createElement("button");
+
+
+                backButton.type = "button";
+
+
+                backButton.textContent =
+                    "← Atrás";
+
+
+                backButton.className =
+                    "border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold px-5 py-3 rounded-xl transition";
+
+
+                backButton.addEventListener(
+                    "click",
+                    goBack
+                );
+
+
+                navigation.appendChild(
+                    backButton
+                );
+
+            }
+
+
+
+            /*
+            ==================================================
+            SELECCIÓN
+            ==================================================
+            */
+
+            const optionButtons =
+                questionContainer.querySelectorAll(
+                    ".option-button"
+                );
+
+
+            optionButtons.forEach(
+                button => {
+
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+
+                            const value =
+                                button.dataset.value;
+
+
+                            answers[
+                                question.key
+                            ] = value;
+
+
+                            optionButtons.forEach(
+                                item => {
+
+                                    item.classList.remove(
+                                        "selected"
+                                    );
+
+                                }
+                            );
+
+
+                            button.classList.add(
+                                "selected"
+                            );
+
+
+                            setTimeout(
+                                goNext,
+                                220
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /*
+        ======================================================
+        SIGUIENTE
+        ======================================================
+        */
+
+        function goNext() {
+
+
+            if (
+                currentStep <
+                questions.length - 1
+            ) {
+
+
+                currentStep++;
+
+
+                renderQuestion();
+
+
+            } else {
+
+
+                showResult();
+
+            }
+
+        }
+
+
+
+        /*
+        ======================================================
+        ATRÁS
+        ======================================================
+        */
+
+        function goBack() {
+
+
+            if (currentStep > 0) {
+
+
+                currentStep--;
+
+
+                renderQuestion();
+
+            }
+
+        }
+
+
+
+        /*
+        ======================================================
+        RESULTADO
+        ======================================================
+        */
+
+        function showResult() {
+
+
+            questionCard.classList.add(
+                "hidden"
+            );
+
+
+            resultCard.classList.remove(
+                "hidden"
+            );
+
+
+
+            let title =
+                "Conviene revisar los antecedentes de tu caso";
+
+
+            let text =
+                "Con la información que nos entregaste, el primer paso es ordenar los antecedentes disponibles y comprender cómo se relacionan con el estado actual de tu licencia.";
+
+
+
+            if (
+                answers.situation ===
+                "RECHAZADA"
+            ) {
+
+
+                title =
+                    "Conviene revisar los fundamentos del rechazo";
+
+
+                text =
+                    "Cuando existe un rechazo, es importante revisar la resolución, sus fundamentos y los antecedentes clínicos y documentales disponibles antes de definir el siguiente paso.";
+
+            }
+
+
+
+            if (
+                answers.situation ===
+                "PENDIENTE"
+            ) {
+
+
+                title =
+                    "Conviene revisar el estado de tu caso";
+
+
+                text =
+                    "Si el caso continúa pendiente, puede ser útil ordenar su trazabilidad y los antecedentes disponibles para comprender en qué situación se encuentra.";
+
+            }
+
+
+
+            if (
+                answers.situation ===
+                "APELACION"
+            ) {
+
+
+                title =
+                    "Conviene revisar la trazabilidad de tu apelación";
+
+
+                text =
+                    "Si ya presentaste una apelación, resulta relevante ordenar las actuaciones realizadas, los antecedentes presentados y el estado actual del procedimiento.";
+
+            }
+
+
+
+            resultTitle.textContent =
+                title;
+
+
+            resultText.textContent =
+                text;
+
+
+
+            summaryStage.textContent =
+                getReadableValue(
+                    answers.stage
+                );
+
+
+            summarySituation.textContent =
+                getReadableValue(
+                    answers.situation
+                );
+
+
+            summaryNeed.textContent =
+                getReadableValue(
+                    answers.need
+                );
+
+
+
+            /*
+            ==================================================
+            MENSAJE WHATSAPP
+            ==================================================
+            */
+
+            const message =
+                "Hola, quiero solicitar la orientación inicial gratuita de GMD.%0A%0A" +
+
+                "Etapa: " +
+                encodeURIComponent(
+                    getReadableValue(
+                        answers.stage
+                    )
+                ) +
+
+                "%0ASituación: " +
+                encodeURIComponent(
+                    getReadableValue(
+                        answers.situation
+                    )
+                ) +
+
+                "%0ANecesito: " +
+                encodeURIComponent(
+                    getReadableValue(
+                        answers.need
+                    )
+                ) +
+
+                "%0A%0A" +
+
+                "Quisiera orientación sobre mi situación.";
+
+
+            whatsappButton.href =
+                `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
+
+            resultCard.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+
+        /*
+        ======================================================
+        TEXTO LEGIBLE
+        ======================================================
+        */
+
+        function getReadableValue(value) {
+
+
+            const values = {
+
+
+                "P1":
+                    "P1 — Citar paciente",
+
+
+                "P2":
+                    "P2 — Solicitar antecedentes",
+
+
+                "P3":
+                    "P3 — Pendiente / fiscalización",
+
+
+                "NO_SE":
+                    "No sé / No entiendo la etapa",
+
+
+                "RECHAZADA":
+                    "Licencia rechazada",
+
+
+                "PENDIENTE":
+                    "Licencia pendiente",
+
+
+                "APELACION":
+                    "Apelación presentada",
+
+
+                "NO_ESTOY_SEGURO":
+                    "No estoy seguro/a",
+
+
+                "ENTENDER":
+                    "Entender mi caso",
+
+
+                "ORDENAR":
+                    "Ordenar mis antecedentes",
+
+
+                "SIGUIENTE":
+                    "Saber qué hacer ahora"
+
+            };
+
+
+            return values[value] || value;
+
+        }
+
+
+
+        /*
+        ======================================================
+        REINICIAR
+        ======================================================
+        */
+
+        restartButton.addEventListener(
+            "click",
+            () => {
+
+
+                currentStep = 0;
+
+
+                answers = {
+
+                    stage: "",
+                    situation: "",
+                    need: ""
+
+                };
+
+
+                resultCard.classList.add(
+                    "hidden"
+                );
+
+
+                questionCard.classList.remove(
+                    "hidden"
+                );
+
+
+                renderQuestion();
+
+
+                document
+                    .getElementById("orientacion")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            }
+        );
+
+
+
+        /*
+        ======================================================
+        INICIAR
+        ======================================================
+        */
+
+        renderQuestion();
+
+    </script>
+
+</body>
+  </html>
